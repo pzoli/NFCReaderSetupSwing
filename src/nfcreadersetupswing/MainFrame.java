@@ -54,7 +54,7 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
         jLabel9 = new javax.swing.JLabel();
         edRequest = new javax.swing.JTextField();
         sendButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnReadConfig = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         edMAC = new javax.swing.JTextField();
 
@@ -136,10 +136,11 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
             }
         });
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnReadConfig.setText("ReadConfig");
+        btnReadConfig.setEnabled(false);
+        btnReadConfig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnReadConfigActionPerformed(evt);
             }
         });
 
@@ -171,7 +172,7 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(sendButton)
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
+                .addComponent(btnReadConfig)
                 .addGap(17, 17, 17))
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -256,7 +257,7 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
-                    .addComponent(jButton1))
+                    .addComponent(btnReadConfig))
                 .addContainerGap())
         );
 
@@ -342,14 +343,14 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
         closeSerialPort();
     }//GEN-LAST:event_formWindowClosing
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnReadConfigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReadConfigActionPerformed
         String startup = "{\"action\":\"readconfig\"}";
         try {
             serialPort.writeString(startup);
         } catch (SerialPortException ex) {
             Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnReadConfigActionPerformed
 
     public void setState() {
         boolean b = serialPort.isOpened();
@@ -370,6 +371,7 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
         edMAC.setEnabled(b);
         edRequest.setEditable(b);
         sendButton.setEnabled(b);
+        btnReadConfig.setEnabled(b);
     }
 
     public void closeSerialPort() {
@@ -441,6 +443,7 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnReadConfig;
     private javax.swing.JCheckBox chxUseDHCP;
     private javax.swing.JButton connectButton;
     private javax.swing.JTextField edDNS;
@@ -450,7 +453,6 @@ public class MainFrame extends javax.swing.JFrame implements jssc.SerialPortEven
     private javax.swing.JTextField edRequest;
     private javax.swing.JTextField edServerIp;
     private javax.swing.JTextField edSubnetMask;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
